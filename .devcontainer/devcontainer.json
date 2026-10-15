@@ -1,4 +1,4 @@
 {
-  "name": "Chromium VNC Codespace",
-  "postCreateCommand": "docker run -d --restart always --name chrome-vnc -p 6080:8080 -e CUSTOM_PORT=8080 lscr.io/linuxserver/chromium:latest"
+  "name": "Firefox VNC Codespace",
+  "postCreateCommand": "docker run -d --restart always --name firefox-vnc -p 6080:3000 -e CUSTOM_PORT=3000 lscr.io/linuxserver/firefox:latest"
 }

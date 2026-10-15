@@ -1,0 +1,42 @@
+name: Compile C++ to WebAssembly
+
+on:
+  push:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Emscripten toolchain
+        uses: mymindstorm/setup-emsdk@v12
+        with:
+          version: 3.1.50
+
+      - name: Compile C++ to WASM
+        run: |
+          emcc main.cpp -O3 -s WASM=1 -s EXPORTED_RUNTIME_METHODS="['ccall','cwrap']" -o app.js
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

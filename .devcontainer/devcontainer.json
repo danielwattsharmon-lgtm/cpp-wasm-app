@@ -1,4 +1,12 @@
 {
   "name": "Firefox VNC Codespace",
-  "postStartCommand": "docker start firefox-vnc || docker run -d --restart always --name firefox-vnc -p 6080:3000 -e CUSTOM_PORT=3000 lscr.io/linuxserver/firefox:latest"
+  "postStartCommand": "docker start firefox-vnc || docker run -d --restart always --name firefox-vnc -p 6080:3000 -e CUSTOM_PORT=3000 lscr.io/linuxserver/firefox:latest",
+  "forwardPorts": [6080],
+  "portsAttributes": {
+    "6080": {
+      "label": "Firefox Stream",
+      "onAutoForward": "openBrowser",
+      "visibility": "public"
+    }
+  }
 }

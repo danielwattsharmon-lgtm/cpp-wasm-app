@@ -1,8 +1,15 @@
 # cpp-wasm-app
 
 ### initial setup:
-1. Wait for the background setup (`postCreateCommand`) to finish downloading the Arduino IDE.
-2. In the **Ports** tab at the bottom, ensure Port **6080** is set to **Public**.
+1. Wait for the background setup to complete.
+2. click the x on the librewolf window inside the codespace, and right click. Then hit 'foot' and paste this then hit enter:
+```bash
+sudo apt-get update && sudo apt-get install -y pcmanfm
+mkdir -p /config/Downloads && cd /config/Downloads
+curl -sSL https://downloads.arduino.cc/arduino-ide/arduino-ide_2.3.10_Linux_64bit.AppImage -o /config/Downloads/arduino-ide_2.3.10_Linux_64bit.AppImage
+chmod +x arduino-ide_2.3.10_Linux_64bit.AppImage
+./arduino-ide_2.3.10_Linux_64bit.AppImage --appimage-extract
+```
 ---
 ### reopening a codespace:
 If the desktop stream isn't running automatically, start it from your terminal:
@@ -11,7 +18,7 @@ docker start librewolf-vnc 2>/dev/null || docker run -d --restart always --name 
 ```
 ---
 ### Arduino:
-Inside the LibreWolf desktop stream terminal, run this command:
+Inside the foot terminal, run this command:
 ```bash
-/config/Desktop/workspace/arduino-ide.AppImage --no-sandbox --appimage-extract-and-run
+/config/Downloads/squashfs-root/arduino-ide --no-sandbox
 ```

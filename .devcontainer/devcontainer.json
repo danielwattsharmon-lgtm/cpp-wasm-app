@@ -1,13 +1,12 @@
 {
-  "name": "LibreWolf & Arduino IDE Codespace",
-  "postCreateCommand": "mkdir -p ~/.librewolf-data ~/.arduinoIDE && wget -q https://downloads.arduino.cc/arduino-ide/nightly/arduino-ide_nightly-latest_Linux_64bit.AppImage -O ~/arduino-ide.AppImage && chmod +x ~/arduino-ide.AppImage",
-  "postStartCommand": "docker start librewolf-vnc 2>/dev/null || docker run -d --restart always --name librewolf-vnc -p 6080:3000 -e CUSTOM_PORT=3000 -v /home/vscode/.librewolf-data:/config -v /home/vscode:/config/Desktop/workspace lscr.io/linuxserver/librewolf:latest",
-  "forwardPorts": [6080],
-  "portsAttributes": {
-    "6080": {
-      "label": "LibreWolf Desktop Stream",
-      "onAutoForward": "openBrowser",
-      "visibility": "public"
+  "name": "Arduino IDE & Selkies Workspace",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y pcmanfm && sudo mkdir -p /config/Downloads && sudo wget -q https://downloads.arduino.cc/arduino-ide/nightly/arduino-ide_nightly-latest_Linux_64bit.AppImage -O /config/Downloads/arduino-ide.AppImage && sudo chmod +x /config/Downloads/arduino-ide.AppImage && cd /config/Downloads && sudo ./arduino-ide.AppImage --appimage-extract",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
     }
   }
 }

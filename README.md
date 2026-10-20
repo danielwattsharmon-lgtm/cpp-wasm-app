@@ -1,10 +1,17 @@
 # cpp-wasm-app
 
-Run these setup commands:
-
+### initial setup:
+1. Wait for the background setup (`postCreateCommand`) to finish downloading the Arduino IDE.
+2. In the **Ports** tab at the bottom, ensure Port **6080** is set to **Public**.
+---
+### reopening a codespace:
+If the desktop stream isn't running automatically, start it from your terminal:
 ```bash
-mkdir -p ~/.firefox-data
-docker rm -f firefox-vnc 2>/dev/null
-docker run -d --restart always --name firefox-vnc -p 6080:3000 -e CUSTOM_PORT=3000 -v /home/vscode/.firefox-data:/config lscr.io/linuxserver/firefox:latest
+docker start librewolf-vnc 2>/dev/null || docker run -d --restart always --name librewolf-vnc -p 6080:3000 -e CUSTOM_PORT=3000 -v /home/vscode/.librewolf-data:/config -v /home/vscode:/config/Desktop/workspace lscr.io/linuxserver/librewolf:latest
 ```
-then just make sure that the port is public
+---
+### Arduino:
+Inside the LibreWolf desktop stream terminal, run this command:
+```bash
+/config/Desktop/workspace/arduino-ide.AppImage --no-sandbox --appimage-extract-and-run
+```

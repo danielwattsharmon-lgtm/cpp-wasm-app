@@ -1,6 +1,18 @@
 {
-  "name": "Arduino IDE & Selkies Workspace",
+  "name": "Arduino IDE & Desktop Workspace",
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {
+    "ghcr.io/devcontainers/features/desktop-lite:1": {
+      "version": "latest"
+    }
+  },
+  "forwardPorts": [6080],
+  "portsAttributes": {
+    "6080": {
+      "label": "Desktop Stream",
+      "onAutoForward": "notify"
+    }
+  },
   "postCreateCommand": "sudo apt-get update && sudo apt-get install -y pcmanfm && sudo mkdir -p /config/Downloads && sudo wget -q https://downloads.arduino.cc/arduino-ide/nightly/arduino-ide_nightly-latest_Linux_64bit.AppImage -O /config/Downloads/arduino-ide.AppImage && sudo chmod +x /config/Downloads/arduino-ide.AppImage && cd /config/Downloads && sudo ./arduino-ide.AppImage --appimage-extract",
   "customizations": {
     "vscode": {

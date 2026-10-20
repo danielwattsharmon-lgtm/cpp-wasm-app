@@ -1,12 +1,8 @@
 {
-  "name": "C++ & WebAssembly Development",
-  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
-  "features": {
-    "ghcr.io/devcontainers/features/common-utils:2": {
-      "installZsh": true,
-      "configureZshAsDefaultShell": true,
-      "upgradePackages": true
-    }
+  "name": "C++ & WebAssembly Development Environment",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
   },
   "customizations": {
     "vscode": {
@@ -19,6 +15,6 @@
       ]
     }
   },
-  "postCreateCommand": "apt-get update && apt-get install -y build-essential cmake ninja-build",
-  "remoteUser": "vscode"
+  "remoteUser": "vscode",
+  "features": {}
 }

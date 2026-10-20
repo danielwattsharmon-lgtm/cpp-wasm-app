@@ -1,26 +1,19 @@
+# Use a pinned LTS base image to prevent apt-get mirror resolution failures
 FROM mcr.microsoft.com/devcontainers/base:ubuntu-22.04
 
-# Install Cinnamon desktop environment, LibreWolf, LibreOffice, and Thunderbird
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    extrepo \
-    cinnamon-desktop-environment \
-    lightdm \
-    pcmanfm \
+# Avoid interactive prompts during build
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install essential build tools and dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    cmake \
+    git \
     curl \
-    thunderbird \
-    libreoffice \
-    && extrepo enable librewolf \
-    && apt-get update \
-    && DEBIAN_FRONTEND=noninteractive apt-get install -y librewolf \
-    # Only purge unnecessary camera hardware, local file share, and default games
-    && apt-get purge -y \
-        cheese \
-        warpinator \
-        hypnotix \
-        simple-scan \
-        aisleriot \
-        mahjongg \
-        gnome-mines \
-        gnome-sudoku \
-    && apt-get autoremove -y \
+    ca-certificates \
+    python3 \
+    && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
+
+# Set default user
+USER vscode

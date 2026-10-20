@@ -13,7 +13,7 @@
       "onAutoForward": "notify"
     }
   },
-  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y pcmanfm && sudo mkdir -p /config/Downloads && sudo wget -q https://downloads.arduino.cc/arduino-ide/nightly/arduino-ide_nightly-latest_Linux_64bit.AppImage -O /config/Downloads/arduino-ide.AppImage && sudo chmod +x /config/Downloads/arduino-ide.AppImage && cd /config/Downloads && sudo ./arduino-ide.AppImage --appimage-extract",
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y pcmanfm && sudo mkdir -p /config/Downloads && sudo chown -R vscode:vscode /config && wget -q https://downloads.arduino.cc/arduino-ide/nightly/arduino-ide_nightly-latest_Linux_64bit.AppImage -O /config/Downloads/arduino-ide.AppImage && chmod +x /config/Downloads/arduino-ide.AppImage && cd /config/Downloads && ./arduino-ide.AppImage --appimage-extract",
   "customizations": {
     "vscode": {
       "settings": {

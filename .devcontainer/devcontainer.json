@@ -1,6 +1,8 @@
 {
   "name": "Linux Mint Cinnamon Workspace",
-  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
   "features": {
     "ghcr.io/devcontainers/features/desktop-lite:1": {
       "desktopElement": "cinnamon"
@@ -13,6 +15,5 @@
       "onAutoForward": "openBrowser",
       "visibility": "public"
     }
-  },
-  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y cinnamon-desktop-environment lightdm"
+  }
 }

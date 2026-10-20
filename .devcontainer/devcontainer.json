@@ -1,10 +1,11 @@
 {
-  "name": "Firefox VNC Codespace",
-  "postStartCommand": "docker start firefox-vnc || docker run -d --restart always --name firefox-vnc -p 6080:3000 -e CUSTOM_PORT=3000 -v /home/vscode/.firefox-data:/config lscr.io/linuxserver/firefox:latest",
+  "name": "LibreWolf & Arduino IDE Codespace",
+  "postCreateCommand": "mkdir -p ~/.librewolf-data ~/.arduinoIDE && wget -q https://downloads.arduino.cc/arduino-ide/nightly/arduino-ide_nightly-latest_Linux_64bit.AppImage -O ~/arduino-ide.AppImage && chmod +x ~/arduino-ide.AppImage",
+  "postStartCommand": "docker start librewolf-vnc 2>/dev/null || docker run -d --restart always --name librewolf-vnc -p 6080:3000 -e CUSTOM_PORT=3000 -v /home/vscode/.librewolf-data:/config -v /home/vscode:/config/Desktop/workspace lscr.io/linuxserver/librewolf:latest",
   "forwardPorts": [6080],
   "portsAttributes": {
     "6080": {
-      "label": "Firefox Stream",
+      "label": "LibreWolf Desktop Stream",
       "onAutoForward": "openBrowser",
       "visibility": "public"
     }

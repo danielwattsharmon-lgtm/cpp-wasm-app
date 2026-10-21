@@ -9,6 +9,7 @@ mkdir -p /config/Downloads && cd /config/Downloads
 curl -sSL https://downloads.arduino.cc/arduino-ide/arduino-ide_2.3.10_Linux_64bit.AppImage -o /config/Downloads/arduino-ide_2.3.10_Linux_64bit.AppImage
 chmod +x arduino-ide_2.3.10_Linux_64bit.AppImage
 ./arduino-ide_2.3.10_Linux_64bit.AppImage --appimage-extract
+pip install pyserial
 ```
 ---
 ### reopening a codespace:
@@ -21,4 +22,10 @@ docker start librewolf-vnc 2>/dev/null || docker run -d --restart always --name 
 Inside the foot terminal, run this command:
 ```bash
 /config/Downloads/squashfs-root/arduino-ide --no-sandbox
+```
+---
+### File manager:
+Inside the foot terminal, run this command:
+```bash
+pcmanfm
 ```

@@ -2,7 +2,7 @@
 
 ### initial setup:
 1. Wait for the background setup to complete.
-2. click the x on the librewolf window inside the codespace, and right click. Then hit 'foot' and paste this then hit enter:
+2. click the x on the librewolf window inside the codespace, and right click. Then hit 'foot' and paste with ctl+shift+v the following and hit enter:
 ```bash
 sudo apt-get update && sudo apt-get install -y pcmanfm
 mkdir -p /config/Downloads && cd /config/Downloads

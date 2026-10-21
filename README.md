@@ -10,6 +10,7 @@ curl -sSL https://downloads.arduino.cc/arduino-ide/arduino-ide_2.3.10_Linux_64bi
 chmod +x arduino-ide_2.3.10_Linux_64bit.AppImage
 ./arduino-ide_2.3.10_Linux_64bit.AppImage --appimage-extract
 pip install pyserial
+sudo find /config -xdev -exec chown -h $(whoami):$(whoami) {} +
 ```
 ---
 ### reopening a codespace:

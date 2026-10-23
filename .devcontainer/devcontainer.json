@@ -1,6 +1,6 @@
 {
-  "name": "LibreWolf & Arduino IDE Codespace",
-  "postCreateCommand": "mkdir -p ~/.librewolf-data ~/.arduinoIDE && wget -q https://downloads.arduino.cc/arduino-ide/nightly/arduino-ide_nightly-latest_Linux_64bit.AppImage -O ~/arduino-ide.AppImage && chmod +x ~/arduino-ide.AppImage",
+  "name": "LibreWolf Desktop & ESP32 Base Environment",
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y pcmanfm && mkdir -p /config/Downloads ~/.librewolf-data && sudo find /config -xdev -exec chown -h $(whoami):$(whoami) {} +",
   "postStartCommand": "docker start librewolf-vnc 2>/dev/null || docker run -d --restart always --name librewolf-vnc -p 6080:3000 -e CUSTOM_PORT=3000 -v /home/vscode/.librewolf-data:/config -v /home/vscode:/config/Desktop/workspace lscr.io/linuxserver/librewolf:latest",
   "forwardPorts": [6080],
   "portsAttributes": {

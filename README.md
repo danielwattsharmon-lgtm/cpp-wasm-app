@@ -2,15 +2,21 @@
 
 ### initial setup:
 1. Wait for the background setup to complete.
-2. click the x on the librewolf window inside the codespace, and right click. Then hit 'foot' and paste with ctl+shift+v the following and hit enter:
+2. close the librewolf window inside the codespace, and right click. Then hit 'foot' and run the following:
 ```bash
 sudo apt-get update && sudo apt-get install -y pcmanfm
 mkdir -p /config/Downloads && cd /config/Downloads
+sudo find /config -xdev -exec chown -h $(whoami):$(whoami) {} +
+```
+If you also want to install Arduino IDE run this
+```bash
 curl -sSL https://downloads.arduino.cc/arduino-ide/arduino-ide_2.3.10_Linux_64bit.AppImage -o /config/Downloads/arduino-ide_2.3.10_Linux_64bit.AppImage
 chmod +x arduino-ide_2.3.10_Linux_64bit.AppImage
 ./arduino-ide_2.3.10_Linux_64bit.AppImage --appimage-extract
 pip install pyserial
-sudo find /config -xdev -exec chown -h $(whoami):$(whoami) {} +
+```
+If you want to unzip files, run this, then unzip files with "unzip /path/to/file.zip"
+```bash
 sudo apt-get update && sudo apt-get install -y unzip
 ```
 ---

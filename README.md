@@ -11,8 +11,8 @@ sudo find /config -xdev -exec chown -h $(whoami):$(whoami) {} +
 If you also want to install Arduino IDE run this
 ```bash
 curl -sSL https://downloads.arduino.cc/arduino-ide/arduino-ide_2.3.10_Linux_64bit.AppImage -o /config/Downloads/arduino-ide_2.3.10_Linux_64bit.AppImage
-chmod +x arduino-ide_2.3.10_Linux_64bit.AppImage
-./arduino-ide_2.3.10_Linux_64bit.AppImage --appimage-extract
+chmod +x /config/Downloads/arduino-ide_2.3.10_Linux_64bit.AppImage
+/config/Downloads/arduino-ide_2.3.10_Linux_64bit.AppImage --appimage-extract
 pip install pyserial
 ```
 If you want to unzip files, run this, then unzip files with "unzip /path/to/file.zip"

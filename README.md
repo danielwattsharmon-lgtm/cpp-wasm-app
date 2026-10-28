@@ -2,7 +2,13 @@
 
 ### initial setup:
 1. Wait for the background setup to complete.
-2. close the librewolf window inside the codespace, and right click. Then hit 'foot' and run the following:
+2. run this in the codespace terminal if "postStartCommand" has a gray "X" next to it:
+```bash
+docker start librewolf-vnc 2>/dev/null || docker run -d --restart always --name librewolf-vnc -p 6080:3000 -e CUSTOM_PORT=3000 -v /home/vscode/.librewolf-data:/config -v /home/vscode:/config/Desktop/workspace lscr.io/linuxserver/librewolf:latest
+```
+3. click on the "Ports" tab and right click the entry then hover over "Port Visibility" and click "Public".
+4. then click the globe icon that appears when hovering over the "Forwarded Address" entry.
+5. close the librewolf window inside the codespace, and right click. Then hit "foot" and run the following:
 ```bash
 sudo apt-get update && sudo apt-get install -y pcmanfm
 mkdir -p /config/Downloads && cd /config/Downloads

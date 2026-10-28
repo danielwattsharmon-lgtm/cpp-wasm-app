@@ -6,7 +6,6 @@
   "portsAttributes": {
     "6080": {
       "label": "LibreWolf Desktop Stream",
-      "onAutoForward": "openBrowser",
       "visibility": "public"
     }
   }

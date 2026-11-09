@@ -14,20 +14,20 @@ sudo apt-get update && sudo apt-get install -y pcmanfm
 mkdir -p /config/Downloads && cd /config/Downloads
 sudo find /config -xdev -exec chown -h $(whoami):$(whoami) {} +
 ```
-If you also want to install Arduino IDE run this
+6. if you also want to install Arduino IDE run this
 ```bash
 curl -sSL https://downloads.arduino.cc/arduino-ide/arduino-ide_2.3.10_Linux_64bit.AppImage -o /config/Downloads/arduino-ide_2.3.10_Linux_64bit.AppImage
 chmod +x /config/Downloads/arduino-ide_2.3.10_Linux_64bit.AppImage
 /config/Downloads/arduino-ide_2.3.10_Linux_64bit.AppImage --appimage-extract
 pip install pyserial
 ```
-If you want to unzip files, run this, then unzip files with "unzip /path/to/file.zip"
+7. if you want to unzip files, run this, then unzip files with "unzip /path/to/file.zip"
 ```bash
 sudo apt-get update && sudo apt-get install -y unzip
 ```
 ---
 ### reopening a codespace:
-Run every time you reopen a codespace:
+Run this in the codespace terminal every time you reopen a codespace if "postStartCommand" has a gray "X" next to it:
 ```bash
 docker start librewolf-vnc 2>/dev/null || docker run -d --restart always --name librewolf-vnc -p 6080:3000 -e CUSTOM_PORT=3000 -v /home/vscode/.librewolf-data:/config -v /home/vscode:/config/Desktop/workspace lscr.io/linuxserver/librewolf:latest
 ```

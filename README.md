@@ -27,7 +27,7 @@ sudo apt-get update && sudo apt-get install -y unzip
 ```
 ---
 ### reopening a codespace:
-Run this in the codespace terminal every time you reopen a codespace if "postStartCommand" has a gray "X" next to it:
+Run this in the codespace terminal every time you reopen a codespace if "postStartCommand" has a gray "X" next to it or if it says "websocket disconnected" on webpage:
 ```bash
 docker start librewolf-vnc 2>/dev/null || docker run -d --restart always --name librewolf-vnc -p 6080:3000 -e CUSTOM_PORT=3000 -v /home/vscode/.librewolf-data:/config -v /home/vscode:/config/Desktop/workspace lscr.io/linuxserver/librewolf:latest
 ```

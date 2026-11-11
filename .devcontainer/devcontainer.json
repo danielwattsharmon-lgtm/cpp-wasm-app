@@ -1,11 +1,13 @@
 {
-  "name": "LibreWolf Desktop & ESP32 Base Environment",
-  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y pcmanfm && mkdir -p /config/Downloads ~/.librewolf-data && sudo find /config -xdev -exec chown -h $(whoami):$(whoami) {} +",
-  "postStartCommand": "docker start librewolf-vnc 2>/dev/null || docker run -d --restart always --name librewolf-vnc -p 6080:3000 -e CUSTOM_PORT=3000 -v /home/vscode/.librewolf-data:/config -v /home/vscode:/config/Desktop/workspace lscr.io/linuxserver/librewolf:latest",
+  "name": "Flatpak Desktop Environment",
+  "runArgs": [
+    "--privileged"
+  ],
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y pcmanfm flatpak && flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo && mkdir -p /config/Downloads && sudo find /config -xdev -exec chown -h $(whoami):$(whoami) {} +",
   "forwardPorts": [6080],
   "portsAttributes": {
     "6080": {
-      "label": "LibreWolf Desktop Stream",
+      "label": "Desktop Stream",
       "visibility": "public"
     }
   }

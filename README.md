@@ -13,6 +13,7 @@ while true; do date; sleep 300; done
 ```bash
 sudo apt-get update && sudo apt-get install -y gnome-software gnome-software-plugin-flatpak
 flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+sudo apt-get update && sudo apt-get upgrade -y && flatpak update -y
 ```
 7. all done! you can close the temrinal window.
 ---

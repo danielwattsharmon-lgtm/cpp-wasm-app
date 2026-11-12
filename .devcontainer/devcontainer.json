@@ -1,11 +1,15 @@
 {
-  "name": "LibreWolf Desktop & ESP32 Base Environment",
-  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y pcmanfm && mkdir -p /config/Downloads ~/.librewolf-data && sudo find /config -xdev -exec chown -h $(whoami):$(whoami) {} +",
-  "postStartCommand": "docker start librewolf-vnc 2>/dev/null || docker run -d --restart always --name librewolf-vnc -p 6080:3000 -e CUSTOM_PORT=3000 -v /home/vscode/.librewolf-data:/config -v /home/vscode:/config/Desktop/workspace lscr.io/linuxserver/librewolf:latest",
+  "name": "Ubuntu XFCE Desktop (Mint-Style)",
+  "runArgs": [
+    "--privileged",
+    "--device=/dev/fuse"
+  ],
+  "postCreateCommand": "mkdir -p ~/.desktop-data && sudo chown -R $(whoami):$(whoami) ~/.desktop-data",
+  "postStartCommand": "docker start xfce-desktop 2>/dev/null || docker run -d --restart always --name xfce-desktop --privileged --device=/dev/fuse --shm-size=1gb -p 6080:3000 -e CUSTOM_PORT=3000 -v /home/vscode/.desktop-data:/config -v /home/vscode:/config/Desktop/workspace lscr.io/linuxserver/webtop:ubuntu-xfce",
   "forwardPorts": [6080],
   "portsAttributes": {
     "6080": {
-      "label": "LibreWolf Desktop Stream",
+      "label": "XFCE Desktop Stream",
       "visibility": "public"
     }
   }

@@ -2,44 +2,27 @@
 
 ### initial setup:
 1. Wait for the background setup to complete.
-2. run this in the codespace terminal if "postStartCommand" has a gray "X" next to it:
+2. click on the "Ports" tab and right click the entry then hover over "Port Visibility" and click "Private".
+3. then click the globe icon that appears when hovering over the "Forwarded Address" entry.
+4. go back to the GitHub codespace tab and run this in the terminal (NOT INSIDE OF THE DESKTOP ENVIROMENT):
 ```bash
-docker start librewolf-vnc 2>/dev/null || docker run -d --restart always --name librewolf-vnc -p 6080:3000 -e CUSTOM_PORT=3000 -v /home/vscode/.librewolf-data:/config -v /home/vscode:/config/Desktop/workspace lscr.io/linuxserver/librewolf:latest
+while true; do date; sleep 300; done
 ```
-3. click on the "Ports" tab and right click the entry then hover over "Port Visibility" and click "Public".
-4. then click the globe icon that appears when hovering over the "Forwarded Address" entry.
-5. close the librewolf window inside the codespace, and right click. Then hit "foot" and run the following:
+5. back in the desktop environment tab, click "applications" in the top left and click "terminal emulator"
+6. copy this command and paste (CTL+SHIFT+V DO NOT USE CTL+V) it in that terminal window, then hit enter:
 ```bash
-sudo apt-get update && sudo apt-get install -y pcmanfm
-mkdir -p /config/Downloads && cd /config/Downloads
-sudo find /config -xdev -exec chown -h $(whoami):$(whoami) {} +
+sudo apt-get update && sudo apt-get install -y gnome-software gnome-software-plugin-flatpak
+flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 ```
-6. if you also want to install Arduino IDE run this
-```bash
-curl -sSL https://downloads.arduino.cc/arduino-ide/arduino-ide_2.3.10_Linux_64bit.AppImage -o /config/Downloads/arduino-ide_2.3.10_Linux_64bit.AppImage
-chmod +x /config/Downloads/arduino-ide_2.3.10_Linux_64bit.AppImage
-/config/Downloads/arduino-ide_2.3.10_Linux_64bit.AppImage --appimage-extract
-pip install pyserial
-```
-7. if you want to unzip files, run this, then unzip files with "unzip /path/to/file.zip"
-```bash
-sudo apt-get update && sudo apt-get install -y unzip
-```
+7. all done! you can close the temrinal window.
+---
+### how to download and run apps:
+1. click the "applications" on the top left of the desktop environment and hover your cursor over the software tab.
+2. click "software"
 ---
 ### reopening a codespace:
-Run this in the codespace terminal every time you reopen a codespace if "postStartCommand" has a gray "X" next to it or if it says "websocket disconnected" on webpage:
-```bash
-docker start librewolf-vnc 2>/dev/null || docker run -d --restart always --name librewolf-vnc -p 6080:3000 -e CUSTOM_PORT=3000 -v /home/vscode/.librewolf-data:/config -v /home/vscode:/config/Desktop/workspace lscr.io/linuxserver/librewolf:latest
-```
 ---
-### Arduino:
-Inside the foot terminal, run this command:
-```bash
-/config/Downloads/squashfs-root/arduino-ide --no-sandbox
-```
+### Arduino IDE:
 ---
 ### File manager:
-Inside the foot terminal, run this command:
-```bash
-pcmanfm
-```
+---

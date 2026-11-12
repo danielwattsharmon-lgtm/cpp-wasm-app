@@ -1,13 +1,15 @@
 {
-  "name": "Flatpak Desktop Environment",
+  "name": "Ubuntu XFCE Desktop (Mint-Style)",
   "runArgs": [
-    "--privileged"
+    "--privileged",
+    "--device=/dev/fuse"
   ],
-  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y pcmanfm flatpak && flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo && mkdir -p /config/Downloads && sudo find /config -xdev -exec chown -h $(whoami):$(whoami) {} +",
+  "postCreateCommand": "mkdir -p ~/.desktop-data && sudo chown -R $(whoami):$(whoami) ~/.desktop-data",
+  "postStartCommand": "docker start xfce-desktop 2>/dev/null || docker run -d --restart always --name xfce-desktop --privileged --device=/dev/fuse --shm-size=1gb -p 6080:3000 -e CUSTOM_PORT=3000 -v /home/vscode/.desktop-data:/config -v /home/vscode:/config/Desktop/workspace lscr.io/linuxserver/webtop:ubuntu-xfce",
   "forwardPorts": [6080],
   "portsAttributes": {
     "6080": {
-      "label": "Desktop Stream",
+      "label": "XFCE Desktop Stream",
       "visibility": "public"
     }
   }

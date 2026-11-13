@@ -19,9 +19,13 @@ sudo ln -sf /var/lib/flatpak/exports/share/applications/*.desktop /config/.local
 7. all done! you can close the temrinal window with the "x" in the upper right hand corner of that window.
 ---
 ### reopening a codespace:
-run this is the codespace terminal (not in the desktop enviorment):
+1. run this is the codespace terminal (not in the desktop enviorment):
 ```bash
 while true; do date; sleep 300; done
+```
+2. run this in the terminal emulator in the desktop enviorment:
+```bash
+sudo ln -sf /var/lib/flatpak/exports/share/applications/*.desktop /config/.local/share/flatpak/exports/share/applications/*.desktop /usr/share/applications/ 2>/dev/null; sudo update-desktop-database /usr/share/applications; dbus-update-activation-environment --all XDG_DATA_DIRS="/var/lib/flatpak/exports/share:/config/.local/share/flatpak/exports/share:/usr/local/share:/usr/share"; gnome-software --quit 2>/dev/null || true
 ```
 ---
 ### how to download and run apps:

@@ -15,6 +15,7 @@ flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/fl
 sudo apt-get update && sudo apt-get upgrade -y && flatpak update -y
 sudo apt-get update && sudo apt-get install -y libfuse2
 sudo ln -sf /var/lib/flatpak/exports/share/applications/*.desktop /config/.local/share/flatpak/exports/share/applications/*.desktop /usr/share/applications/ 2>/dev/null; sudo update-desktop-database /usr/share/applications; dbus-update-activation-environment --all XDG_DATA_DIRS="/var/lib/flatpak/exports/share:/config/.local/share/flatpak/exports/share:/usr/local/share:/usr/share"; gnome-software --quit 2>/dev/null || true
+sudo chown -R abc:abc ~/Desktop/workspace
 ```
 7. all done! you can close the temrinal window with the "x" in the upper right hand corner of that window.
 ---
